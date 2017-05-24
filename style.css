@@ -16,6 +16,12 @@
     margin-top: 32px;
 }
 
+#register-button {
+    float: right;
+    margin: 10px;
+    margin-right: 1px;
+}
+
 .menu-table {
     table-layout: fixed;
     word-wrap: break-word;
