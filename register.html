@@ -1,52 +1,58 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>メニュー登録画面</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/bootstrap.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-  </head>
-  <body>
-    <h1>メニュー登録画面</h1>
+<body class="no-thank-yu">
+    <div class="container">
+        <h1>メニュー登録画面</h1>
 
-    <table border="1" width="300" cellspacing="0" cellpadding="5" bordercolor="#333333">
-        <tr>
-            <th>商品名</th>
-            <td><input type="text" name="name">
-            </td>
-        </tr>
-        <tr>
-            <th>販売日</th>
-            <td><input type="date" name="sale_date"></td>
-        </tr>
+        <table class="table">
+            <tr>
+                <th>商品名</th>
+                <td><input type="text" name="name">
+                </td>
+            </tr>
+            <tr>
+                <th>販売日</th>
+                <td><input type="date" name="sale_date"></td>
+            </tr>
 
-        <tr>
-            <th>値段</th>
-            <td><input type="number" name="price">(円)</td>
-        </tr>
+            <tr>
+                <th>値段</th>
+                <td><input type="number" name="price"> (円)</td>
+            </tr>
 
-        <tr>
-            <th>エネルギー</th>
-            <td><input type="number" name="energy">(kcal)</td>
-        </tr>
-        <tr>
-            <th>タンパク質</th>
-            <td><input type="number" name="protein">(g)</td>
-        </tr>
-        <tr>
-            <th>脂質</th>
-            <td><input type="number" name="lipid">(g)</td>
-        </tr>
-        <tr>
-            <th>塩分</th>
-            <td><input type="number" name="salt">(g)</td>
-        </tr>
-    </table>
+            <tr>
+                <th>エネルギー</th>
+                <td><input type="number" name="energy"> (kcal)</td>
+            </tr>
+            <tr>
+                <th>タンパク質</th>
+                <td><input type="number" name="protein"> (g)</td>
+            </tr>
+            <tr>
+                <th>脂質</th>
+                <td><input type="number" name="lipid"> (g)</td>
+            </tr>
+            <tr>
+                <th>塩分</th>
+                <td><input type="number" name="salt">(g)</td>
+            </tr>
+        </table>
 
-    <input type="button" value="登録">
-    <input type="button" value="キャンセル">
+        <input type="button" value="登録">
+        <input type="button" value="キャンセル">
 
+    </div>
+</body>
 
-  </body>
 </html>
