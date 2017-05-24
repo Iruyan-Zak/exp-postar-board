@@ -2,6 +2,6 @@ html>(head>title{poSter board})+body.no-thank-yu>
 
 table.menu-table.table.table-striped>
 
-(tr.menu-row>th#item-modify-header+th#item-like-header+th#item-soldout-header+th#item-name-header{メニュー名}+th#item-price-header{価格 (円)}+th#item-cal-header{熱量 (kCal)})
+(tr.menu-row>th#item-soldout-header+th#item-modify-header+th#item-like-header+th#item-liked-header{☆}+th#item-name-header{メニュー名}+th#item-price-header{価格 (円)}+th#item-cal-header{熱量 (kCal)})
 
-(tr.menu-row>(td.modify-button>input[type=button value=編集])+(td.like-button>input[type=button value=投票])+(td.soldout-button>input[type=button value=売切])+td.item-name{特選国産牛フィレ肉とフォアグラのロースト ランド風ポテトと野生茸のフリカッセ 旬の彩り野菜 フランス産モリーユ茸とヴィンテージポルト酒のソース}+td.number.item-price{$\00}+td.number.item-cal{$\12})*5
+(tr.menu-row>(td.soldout-button>input[type=button value=売切])+(td.modify-button>input[type=button value=編集])+(td.like-button>input[type=button value=投票])+td.item-liked.number{$}+td.item-name{特選国産牛フィレ肉とフォアグラのロースト ランド風ポテトと野生茸のフリカッセ 旬の彩り野菜 フランス産モリーユ茸とヴィンテージポルト酒のソース}+td.number.item-price{$\00}+td.number.item-cal{$\12})*5
