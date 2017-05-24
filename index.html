@@ -2,48 +2,69 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>poSter board</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/bootstrap.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="no-thank-yu">
     <div class="container">
-        <table class="table table-striped">
-            <tr>
-                <th></th>
-                <th>メニュー名</th>
-                <th id="price-header">価格&nbsp;(円)</th>
-                <th>エネルギー (kCal)</th>
+        <table class="menu-table table table-striped">
+            <tr class="menu-row">
+                <th id="item-modify-header"></th>
+                <th id="item-like-header"></th>
+                <th id="item-soldout-header"></th>
+                <th id="item-liked-header">☆</th>
+                <th id="item-name-header">メニュー名</th>
+                <th id="item-price-header">価格 (円)</th>
+                <th id="item-cal-header">熱量 (kCal)</th>
             </tr>
-            <tr>
+            <tr class="menu-row">
+                <td class="soldout-button"><input type="button" value="売切"></td>
                 <td class="modify-button"><input type="button" value="編集"></td>
-                <td class="item-name">自家製サーモンのマリネ 海の恵みの宝石仕立て新鮮な千葉産ガーデングリーンとキャビアを添えて</td>
+                <td class="like-button"><input type="button" value="投票"></td>
+                <td class="item-liked number">1</td>
+                <td class="item-name">特選国産牛フィレ肉とフォアグラのロースト ランド風ポテトと野生茸のフリカッセ 旬の彩り野菜 フランス産モリーユ茸とヴィンテージポルト酒のソース</td>
                 <td class="number item-price">100</td>
                 <td class="number item-cal">112</td>
             </tr>
-            <tr>
+            <tr class="menu-row">
+                <td class="soldout-button"><input type="button" value="売切"></td>
                 <td class="modify-button"><input type="button" value="編集"></td>
-                <td class="item-name">商品2</td>
+                <td class="like-button"><input type="button" value="投票"></td>
+                <td class="item-liked number">2</td>
+                <td class="item-name">特選国産牛フィレ肉とフォアグラのロースト ランド風ポテトと野生茸のフリカッセ 旬の彩り野菜 フランス産モリーユ茸とヴィンテージポルト酒のソース</td>
                 <td class="number item-price">200</td>
                 <td class="number item-cal">212</td>
             </tr>
-            <tr>
+            <tr class="menu-row">
+                <td class="soldout-button"><input type="button" value="売切"></td>
                 <td class="modify-button"><input type="button" value="編集"></td>
-                <td class="item-name">商品3</td>
+                <td class="like-button"><input type="button" value="投票"></td>
+                <td class="item-liked number">3</td>
+                <td class="item-name">特選国産牛フィレ肉とフォアグラのロースト ランド風ポテトと野生茸のフリカッセ 旬の彩り野菜 フランス産モリーユ茸とヴィンテージポルト酒のソース</td>
                 <td class="number item-price">300</td>
                 <td class="number item-cal">312</td>
             </tr>
-            <tr>
+            <tr class="menu-row">
+                <td class="soldout-button"><input type="button" value="売切"></td>
                 <td class="modify-button"><input type="button" value="編集"></td>
-                <td class="item-name">商品4</td>
+                <td class="like-button"><input type="button" value="投票"></td>
+                <td class="item-liked number">4</td>
+                <td class="item-name">特選国産牛フィレ肉とフォアグラのロースト ランド風ポテトと野生茸のフリカッセ 旬の彩り野菜 フランス産モリーユ茸とヴィンテージポルト酒のソース</td>
                 <td class="number item-price">400</td>
                 <td class="number item-cal">412</td>
             </tr>
-            <tr>
+            <tr class="menu-row">
+                <td class="soldout-button"><input type="button" value="売切"></td>
                 <td class="modify-button"><input type="button" value="編集"></td>
-                <td class="item-name">商品5</td>
+                <td class="like-button"><input type="button" value="投票"></td>
+                <td class="item-liked number">5</td>
+                <td class="item-name">特選国産牛フィレ肉とフォアグラのロースト ランド風ポテトと野生茸のフリカッセ 旬の彩り野菜 フランス産モリーユ茸とヴィンテージポルト酒のソース</td>
                 <td class="number item-price">500</td>
                 <td class="number item-cal">512</td>
             </tr>
