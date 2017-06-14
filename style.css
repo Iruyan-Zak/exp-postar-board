@@ -38,6 +38,10 @@
     word-wrap: break-word;
 }
 
+.menu-detail{
+	display:none;
+}
+
 .number {
     text-align: right;
 }
