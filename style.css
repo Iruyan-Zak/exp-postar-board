@@ -16,6 +16,23 @@
     margin-top: 32px;
 }
 
+#previous-day-button {
+    float: left;
+    margin: 10px;
+    margin-left: 1px;
+}
+
+#register-button,
+#next-day-button {
+    float: right;
+    margin: 10px;
+    margin-right: 1px;
+}
+
+#register-area {
+    clear: both;
+}
+
 .menu-table {
     table-layout: fixed;
     word-wrap: break-word;
