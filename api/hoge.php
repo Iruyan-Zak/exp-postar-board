@@ -2,9 +2,9 @@
 echo "Hello World!\n";
 if($_SERVER["REQUEST_METHOD"] != "POST"){
 	echo "これはGETだよ！!\n";
-  echo $_GET;
+  print_r($_GET);
 }else{
 	echo "これはPOSTだよ！!\n";
-  echo $_POST;
+  print_r($_POST);
 }
 ?>
