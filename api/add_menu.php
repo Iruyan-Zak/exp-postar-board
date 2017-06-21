@@ -4,49 +4,55 @@ if (!$link) {
     print('接続失敗');
     exit;
 }
-$query = array();
+$product_query = array();
+$menu_query = array();
+
+if(!isset($_GET["sold_on"])){
+    echo '販売日指定なし';
+    exit;
+}
 
 if(!isset($_GET["name"]) ||!isset($_GET['price'])){
     echo '不正なパラメータ';
     exit;
 }
-$query[] = "'" . $_GET['name'] ."'" ;
-$query[] = $_GET['price'];
+$product_query[] = "'" . $_GET['name'] ."'" ;
+$product_query[] = $_GET['price'];
 
 if(isset($_GET["energy"])){
-    $query[] = $_GET['energy'];
+    $product_query[] = $_GET['energy'];
 } else {
-    $query[] = 'null';
+    $product_query[] = 'null';
 }
 
 if(isset($_GET["protein"])){
-    $query[] = $_GET['protein'];
+    $product_query[] = $_GET['protein'];
 } else {
-    $query[] = 'null';
+    $product_query[] = 'null';
 }
 if(isset($_GET["lipid"])){
-    $query[] = $_GET['lipid'];
+    $product_query[] = $_GET['lipid'];
 } else {
-    $query[] = 'null';
+    $product_query[] = 'null';
 }
 if(isset($_GET["salt"])){
-    $query[] = $_GET['salt'];
+    $product_query[] = $_GET['salt'];
 } else {
-    $query[] = 'null';
-}
-if(isset($_GET["sold_on"])){
-    $query[] = $_GET['sold_on'];
-} else {
-    $query[] = 'null';
+    $product_query[] = 'null';
 }
 
 if(!isset($_GET['id'])){
-    $sql = 'insert into products (name,price,energy,protein,lipid,salt) values (' . join(',' , $query) . ') returning name';
-    $result = pg_query($link,$sql);
-    echo $result;
-}else{
-    echo '更新処理';
+    $sql = 'insert into products (name,price,energy,protein,lipid,salt) values (' . join(',' , $product_query) . ') returning product_id';
+    pg_query($link,$sql);
+    $menu_query[] = pg_query('select curval("product_id")');
+    echo $menu_query[0];
+    $menu_query[] = '"' . $_GET['sold_on'] .'"';
+    $sql = 'insert into menus (product_id,sold_on) values (' . join(',' , $menu_query) . ')';
+    echo $sql;
+    $menu_query[] = pg_query($link,$sql);
 }
+
+
 pg_close($link);
 ?>
 
