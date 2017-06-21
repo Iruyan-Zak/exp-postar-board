@@ -48,9 +48,6 @@ if(!isset($_GET['id'])){
     $sql = 'insert into menus (product_id,sold_on) values (' . join(',' , $menu_query) . ') returning product_id';
     echo $sql;
     $menu_query[] = pg_query($link,$sql);
-    }
-}else{
-    echo '更新処理';
 }
 
 
