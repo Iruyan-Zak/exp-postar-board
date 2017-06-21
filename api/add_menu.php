@@ -7,7 +7,7 @@ if (!$link) {
 $product_query = array();
 $menu_query = array();
 
-if(!isset($_GET["sold_on"]){
+if(!isset($_GET["sold_on"])){
     echo '販売日指定なし';
     exit;
 }
