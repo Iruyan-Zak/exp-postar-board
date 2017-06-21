@@ -5,9 +5,10 @@ if (!$link) {
     exit;
 }
 
-if(isset($_GET["name"])){
-    echo $_GET["name"];
+if(!isset($_GET["name"])){
+    return '不正なパラメータ';
 }
+echo $_GET["name"];
 if(isset($_GET["energy"])){
     echo $_GET["energy"];
 }
