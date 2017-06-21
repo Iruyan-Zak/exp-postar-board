@@ -9,6 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="js/bootstrap.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
   </head>
 
@@ -27,8 +28,16 @@
 
       <script>
 	$(function(){
-	$('tr.menu-row').addClass('clickable').click(function() {
-	$(this).next().toggle();
+	$('td.dropdown').addClass('clickable').click(function() {
+	$(this).parent().next().toggle();
+	});
+	});
+      </script>
+
+      <script>
+	$(function(){
+	$('i.fa-times').addClass('clickable').click(function(){
+	$document.getElementByClassName("td.item-price")(0).textContent="売り切れ";
 	});
 	});
       </script>
@@ -44,53 +53,65 @@
           <th id="item-cal-header">熱量 (kcal)</th>
         </tr>
         <tr class="menu-row">
-          <td class="soldout-button"><input type="button" class="btn" value="売切"></td>
-          <td class="modify-button"><input type="button" class="btn" value="編集"></td>
-          <td class="like-button"><input type="button" class="btn" value="投票"></td>
+          <td class="soldout-button"><i class="fa fa-times" aria-hidden="true"></i></td>
+          <td class="modify-button"><a href="modify.html"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+          <td class="like-button"><i class="fa fa-star-o" aria-hidden="true"></i></td>
           <td class="item-liked number">1</td>
-          <td class="item-name">特選国産牛フィレ肉とフォアグラのロースト ランド風ポテトと野生茸のフリカッセ 旬の彩り野菜 フランス産モリーユ茸とヴィンテージポルト酒のソース</td>
-          <td class="number item-price">100</td>
-          <td class="number item-cal">112</td>
+          <td class="item-name dropdown">特選国産牛フィレ肉とフォアグラのロースト ランド風ポテトと野生茸のフリカッセ 旬の彩り野菜 フランス産モリーユ茸とヴィンテージポルト酒のソース</td>
+          <td class="number item-price dropdown">100</td>
+          <td class="number item-cal dropdown">112</td>
         </tr>
 	<tr class="menu-detail">
 	  <td colspan="7">熱量 100 kcal</td>
 	</tr>
         <tr class="menu-row">
-          <td class="soldout-button"><input type="button" class="btn" value="売切"></td>
-          <td class="modify-button"><input type="button" class="btn" value="編集"></td>
-          <td class="like-button"><input type="button" class="btn" value="投票"></td>
+          <td class="soldout-button"><i class="fa fa-times" aria-hidden="true"></i></td>
+          <td class="modify-button"><a href="modify.html"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+          <td class="like-button"><i class="fa fa-star-o" aria-hidden="true"></i></td>
           <td class="item-liked number">2</td>
-          <td class="item-name">特選国産牛フィレ肉とフォアグラのロースト ランド風ポテトと野生茸のフリカッセ 旬の彩り野菜 フランス産モリーユ茸とヴィンテージポルト酒のソース</td>
-          <td class="number item-price">200</td>
-          <td class="number item-cal">212</td>
+          <td class="item-name dropdown">特選国産牛フィレ肉とフォアグラのロースト ランド風ポテトと野生茸のフリカッセ 旬の彩り野菜 フランス産モリーユ茸とヴィンテージポルト酒のソース</td>
+          <td class="number item-price dropdown">200</td>
+          <td class="number item-cal dropdown">212</td>
         </tr>
+	<tr class="menu-detail">
+	  <td colspan="7">熱量 100 kcal</td>
+	</tr>
         <tr class="menu-row">
-          <td class="soldout-button"><input type="button" class="btn" value="売切"></td>
-          <td class="modify-button"><input type="button" class="btn" value="編集"></td>
-          <td class="like-button"><input type="button" class="btn" value="投票"></td>
+          <td class="soldout-button"><i class="fa fa-times" aria-hidden="true"></i></td>
+          <td class="modify-button"><a href="modify.html"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+          <td class="like-button"><i class="fa fa-star-o" aria-hidden="true"></i></td>
           <td class="item-liked number">3</td>
-          <td class="item-name">特選国産牛フィレ肉とフォアグラのロースト ランド風ポテトと野生茸のフリカッセ 旬の彩り野菜 フランス産モリーユ茸とヴィンテージポルト酒のソース</td>
-          <td class="number item-price">300</td>
-          <td class="number item-cal">312</td>
+          <td class="item-name dropdown">特選国産牛フィレ肉とフォアグラのロースト ランド風ポテトと野生茸のフリカッセ 旬の彩り野菜 フランス産モリーユ茸とヴィンテージポルト酒のソース</td>
+          <td class="number item-price dropdown">300</td>
+          <td class="number item-cal dropdown">312</td>
         </tr>
+	<tr class="menu-detail">
+	  <td colspan="7">熱量 100 kcal</td>
+	</tr>
         <tr class="menu-row">
-          <td class="soldout-button"><input type="button" class="btn" value="売切"></td>
-          <td class="modify-button"><input type="button" class="btn" value="編集"></td>
-          <td class="like-button"><input type="button" class="btn" value="投票"></td>
+          <td class="soldout-button"><i class="fa fa-times" aria-hidden="true"></i></td>
+          <td class="modify-button"><a href="modify.html"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+          <td class="like-button"><i class="fa fa-star-o" aria-hidden="true"></i></td>
           <td class="item-liked number">4</td>
-          <td class="item-name">特選国産牛フィレ肉とフォアグラのロースト ランド風ポテトと野生茸のフリカッセ 旬の彩り野菜 フランス産モリーユ茸とヴィンテージポルト酒のソース</td>
-          <td class="number item-price">400</td>
-          <td class="number item-cal">412</td>
+          <td class="item-name dropdown">特選国産牛フィレ肉とフォアグラのロースト ランド風ポテトと野生茸のフリカッセ 旬の彩り野菜 フランス産モリーユ茸とヴィンテージポルト酒のソース</td>
+          <td class="number item-price dropdown">400</td>
+          <td class="number item-cal dropdown">412</td>
         </tr>
+	<tr class="menu-detail">
+	  <td colspan="7">熱量 100 kcal</td>
+	</tr>
         <tr class="menu-row">
-          <td class="soldout-button"><input type="button" class="btn" value="売切"></td>
-          <td class="modify-button"><input type="button" class="btn" value="編集"></td>
-          <td class="like-button"><input type="button" class="btn" value="投票"></td>
+          <td class="soldout-button"><i class="fa fa-times" aria-hidden="true"></i></td>
+          <td class="modify-button"><a href="modify.html"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+          <td class="like-button"><i class="fa fa-star-o" aria-hidden="true"></i></td>
           <td class="item-liked number">5</td>
-          <td class="item-name">特選国産牛フィレ肉とフォアグラのロースト ランド風ポテトと野生茸のフリカッセ 旬の彩り野菜 フランス産モリーユ茸とヴィンテージポルト酒のソース</td>
-          <td class="number item-price">500</td>
-          <td class="number item-cal">512</td>
+          <td class="item-name dropdown">特選国産牛フィレ肉とフォアグラのロースト ランド風ポテトと野生茸のフリカッセ 旬の彩り野菜 フランス産モリーユ茸とヴィンテージポルト酒のソース</td>
+          <td class="number item-price dropdown">500</td>
+          <td class="number item-cal dropdown">512</td>
         </tr>
+	<tr class="menu-detail">
+	  <td colspan="7">熱量 100 kcal</td>
+	</tr>
       </table>
     </div>
   </body>
