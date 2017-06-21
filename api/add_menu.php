@@ -4,37 +4,38 @@ if (!$link) {
     print('接続失敗');
     exit;
 }
-query = array();
+$query = array();
+
 if(!isset($_GET["name"])){
     echo '不正なパラメータ';
     exit;
 }
-query[] = $_GET['name'];
+$query[] = $_GET['name'];
 
 if(isset($_GET["energy"])){
-    query[] = $_GET['energy'];
+    $query[] = $_GET['energy'];
 } else {
-    query[] = 'null';
+    $query[] = 'null';
 }
 if(isset($_GET["protein"])){
-    query[] = $_GET['protein'];
+    $query[] = $_GET['protein'];
 } else {
-    query[] = 'null';
+    $query[] = 'null';
 }
 if(isset($_GET["lipid"])){
-    query[] = $_GET['lipid'];
+    $query[] = $_GET['lipid'];
 } else {
-    query[] = 'null';
+    $query[] = 'null';
 }
 if(isset($_GET["salt"])){
-    query[] = $_GET['salt'];
+    $query[] = $_GET['salt'];
 } else {
-    query[] = 'null';
+    $query[] = 'null';
 }
 if(isset($_GET["sold_on"])){
-    query[] = $_GET['sold_on'];
+    $query[] = $_GET['sold_on'];
 } else {
-    query[] = 'null';
+    $query[] = 'null';
 }
 
 if(!isset($_GET['id']){
