@@ -10,7 +10,7 @@ if(!isset($_GET["name"]) ||!isset($_GET['price'])){
     echo '不正なパラメータ';
     exit;
 }
-$query[] = $_GET['name'];
+$query[] = "'" . $_GET['name'] ."'" ;
 $query[] = $_GET['price'];
 
 if(isset($_GET["energy"])){
@@ -41,7 +41,8 @@ if(isset($_GET["sold_on"])){
 }
 
 if(!isset($_GET['id'])){
-    $result = pg_query('insert into products (name,price,energy,protein,lipid,salt) values (' . join(',' , $query) . ') returning name');
+    $sql = 'insert into products (name,price,energy,protein,lipid,salt) values (' . join(',' , $query) . ') returning name'
+    $result = pg_query($link,$sql);
 }else{
     echo '更新処理';
 }
