@@ -40,7 +40,7 @@ if(isset($_GET["sold_on"])){
 }
 
 if(!isset($_GET['id'])){
-    $result = pg_query('insert into products (name,energy,protein,lipid,salt) values (' . join(',' , query) . '\'');
+    $result = pg_query('insert into products (name,energy,protein,lipid,salt) values (' . join(',' , query) . ') returning *');
 }else{
     echo '更新処理';
 }
