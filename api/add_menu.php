@@ -43,7 +43,7 @@ if(isset($_GET["salt"])){
 
 if(!isset($_GET['id'])){
     $sql = 'insert into products (name,price,energy,protein,lipid,salt) values (' . join(',' , $product_query) . ') returning product_id';
-    print_r(pg_fetch_array(pg_query($link,$sql)));
+    print_r(pg_fetch_row(pg_query($link,$sql)));
     $menu_query[] = pg_query('select curval("product_id")');
     echo $menu_query[0];
     $menu_query[] = '"' . $_GET['sold_on'] .'"';
