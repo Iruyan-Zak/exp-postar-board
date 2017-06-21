@@ -42,6 +42,7 @@ if(isset($_GET["sold_on"])){
 
 if(!isset($_GET['id'])){
     $sql = 'insert into products (name,price,energy,protein,lipid,salt) values (' . join(',' , $query) . ') returning name';
+    echo $sql;
     $result = pg_query($link,$sql);
     echo $result;
 }else{
