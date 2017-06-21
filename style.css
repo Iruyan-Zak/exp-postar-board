@@ -64,3 +64,8 @@ th {
 #item-liked-header {
     width: 5%;
 }
+
+
+tr[soldout="true"] > .item-price {
+    color: #FF0000;
+}
