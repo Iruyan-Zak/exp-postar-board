@@ -34,14 +34,6 @@
 	});
       </script>
 
-      <script>
-	$(function(){
-	$('i.fa-times').addClass('clickable').click(function(){
-	$document.getElementByClassName("td.item-price")(0).textContent="売り切れ";
-	});
-	});
-      </script>
-
       <table class="menu-table table table-striped">
         <tr class="menu-row">
           <th id="item-modify-header"></th>
@@ -111,6 +103,18 @@
         </tr>
 	<tr class="menu-detail">
 	  <td colspan="7">熱量 100 kcal</td>
+	</tr>
+       <tr class="menu-row">
+          <td class="soldout-button"><i class="fa fa-times" aria-hidden="true"></i></td>
+          <td class="modify-button"><a href="modify.html"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+          <td class="like-button"><i class="fa fa-star-o" aria-hidden="true"></i></td>
+          <td class="item-liked number">#star#</td>
+          <td class="item-name dropdown">#name#</td>
+          <td class="number item-price dropdown">#price#</td>
+          <td class="number item-cal dropdown">#energy#</td>
+        </tr>
+	<tr class="menu-detail">
+	  <td colspan="7">タンパク質:#protein#g, 脂質:#lipid#g, 塩分:#salt#g</td>
 	</tr>
       </table>
     </div>

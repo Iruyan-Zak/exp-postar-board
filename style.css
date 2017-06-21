@@ -67,5 +67,5 @@ th {
 
 
 tr[soldout="true"] > .item-price {
-    color: #FF0000;
+    content: 売り切れ;
 }
