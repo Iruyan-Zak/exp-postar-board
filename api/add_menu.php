@@ -44,10 +44,10 @@ if(isset($_GET["salt"])){
 if(!isset($_GET['id'])){
     $sql = 'insert into products (name,price,energy,protein,lipid,salt) values (' . join(',' , $product_query) . ') returning product_id';
     $menu_query[] = pg_query($link,$sql);
-    if(isset($_GET["sold_on"])){
-        $menu_query[] = $_GET['sold_on'];
-    } else {
-        $menu_query[] = 'null';
+    $menu_query[] = '"' . $_GET['sold_on'] .'"';
+    $sql = 'insert into menus (product_id,sold_on) values (' . join(',' , $menu_query) . ') returning product_id';
+    echo $sql;
+    $menu_query[] = pg_query($link,$sql);
     }
 }else{
     echo '更新処理';
