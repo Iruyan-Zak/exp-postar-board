@@ -4,7 +4,7 @@ if (!$link) {
         print('接続失敗');
         exit;
 }
-$result = pg_query('SELECT * FROM menus where sold_on = ' . $_GET["date"]);
+$result = pg_query('select * from menus,products where menus.product_id = products.product_id and sold_on = "' . $_GET["date"] . '"');
 if (!$result) {
         print('クエリ失敗');
         exit;
