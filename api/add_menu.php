@@ -44,8 +44,9 @@ if(isset($_GET["salt"])){
 if(!isset($_GET['id'])){
     $sql = 'insert into products (name,price,energy,protein,lipid,salt) values (' . join(',' , $product_query) . ') returning product_id';
     $menu_query[] = pg_query($link,$sql);
+    echo $menu_query[0];
     $menu_query[] = '"' . $_GET['sold_on'] .'"';
-    $sql = 'insert into menus (product_id,sold_on) values (' . join(',' , $menu_query) . ') returning product_id';
+    $sql = 'insert into menus (product_id,sold_on) values (' . join(',' , $menu_query) . ')';
     echo $sql;
     $menu_query[] = pg_query($link,$sql);
 }
