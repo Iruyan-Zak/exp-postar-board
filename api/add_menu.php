@@ -5,22 +5,22 @@ if (!$link) {
     exit;
 }
 
-if(isset($_GET["name"]){
+if(isset($_GET["name"])){
     echo $_GET["name"];
 }
-if(isset($_GET["energy"]){
+if(isset($_GET["energy"])){
     echo $_GET["energy"];
 }
-if(isset($_GET["protein"]){
+if(isset($_GET["protein"])){
     echo $_GET["protein"];
 }
-if(isset($_GET["lipid"]){
+if(isset($_GET["lipid"])){
     echo $_GET["lipid"];
 }
-if(isset($_GET["salt"]){
+if(isset($_GET["salt"])){
     echo $_GET["salt"];
 }
-if(isset($_GET["sold_on"]){
+if(isset($_GET["sold_on"])){
     echo $_GET["sold_on"];
 }
 
