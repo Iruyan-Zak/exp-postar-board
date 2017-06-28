@@ -52,7 +52,7 @@ if(isset($_GET["salt"])){
     $product_query[] = 'null';
 }
 
-$sql = 'update products set (name,price,energy,protein,lipid,salt)=(' + join(',' , $product_query) . ') from menus where products.product_id=menus.product_id and menus.menu_id=' . $_GET['id'];
+$sql = 'update products set (name,price,energy,protein,lipid,salt)=(' . join(',' , $product_query) . ') from menus where products.product_id=menus.product_id and menus.menu_id=' . $_GET['id'];
 echo $sql;
 $result = pg_query($link,$sql);
 echo $result;
