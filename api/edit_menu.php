@@ -4,8 +4,6 @@ if (!$link) {
     print('接続失敗');
     exit;
 }
-$product_query = array();
-$menu_query = array();
 
 if(!isset($_GET["name"])){
     echo '名前がありません';
@@ -26,6 +24,8 @@ if(isset($_GET['sold_on'])){
 
 $result = pg_query($link,$sql);
 echo $result;
+
+$product_query = array();
 
 $product_query[] = "'" . $_GET['name'] ."'" ;
 $product_query[] = $_GET['price'];
@@ -53,6 +53,7 @@ if(isset($_GET["salt"])){
 }
 
 $sql = 'update products set (name,price,energy,protein,lipid,salt)=(' + join(',' , $product_query) . ') from menus where products.product_id=menus.product_id and menus.menu_id=' . $_GET['id'];
+echo $sql;
 $result = pg_query($link,$sql);
 echo $result;
 
