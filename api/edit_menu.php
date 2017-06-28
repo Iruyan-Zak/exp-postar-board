@@ -51,5 +51,6 @@ pg_query($link,$sql);
 if(isset($_GET['sold_on'])){
     $sql = 'update menus set sold_on=' . $_GET['sold_on'] . ' where menu_id=' .$_GET['id'];
 }
+pg_query($link,$sql);
 pg_close($link);
 ?>
