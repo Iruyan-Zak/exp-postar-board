@@ -8,7 +8,7 @@ if(!isset($_GET['id'])){
     echo 'idがありません';
     exit;
 }
-pg_query($link,'update menus set star=star+1 where menus_id=' . $_GET['id']);
+pg_query($link,'update menus set star=star+1 where menu_id=' . $_GET['id']);
 
 pg_close($link);
 ?>
