@@ -12,7 +12,7 @@ if(!isset($_GET['sold_out'])){
     echo '売り切れ情報が指定されていません';
     exit;
 }
-pg_query($link,'update menus set sold_out=' . $_GET['sold_out'] . ' where product_id=' . $_GET['id']);
+pg_query($link,'update menus set sold_out=' . $_GET['sold_out'] . ' where menu_id=' . $_GET['id']);
 
 pg_close($link);
 ?>
