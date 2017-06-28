@@ -66,6 +66,12 @@ th {
 }
 
 
-tr[soldout="true"] > .item-price {
-    content: 売り切れ;
+tr[soldout="true"] > .item-price::before{
+    content: "売り切れ";
+    color: #F00;
 }
+
+tr[soldout="true"] > .item-price > span{
+    text-decoration: line-through;
+}
+
