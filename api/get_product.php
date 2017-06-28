@@ -10,7 +10,7 @@ if(!isset($_GET['name'])){
     exit;
 }
 
-$result = pg_query('select * from products where name=' . $_GET["name"]);
+$result = pg_query('select * from products where name=\'' . $_GET["name"] . '\'');
 
 if (!$result) {
         print('クエリ失敗');
