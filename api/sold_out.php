@@ -4,11 +4,15 @@ if (!$link) {
     print('接続失敗');
     exit;
 }
-if(!isset($_GET['id']) ||!isset($_GET['sold_out'])){
-    pg_query($link,'update menus set sold_out=' . $_GET['sold_out'] . ' where product_id=' . $_GET['id']);
-}else[
-    echo 'パラメータ不正';
+if(!isset($_GET['id'])){
+    echo 'idがありません';
+    exit;
 }
+if(!isset($_GET['sold_out'])){
+    echo '売り切れ情報が指定されていません';
+    exit;
+}
+pg_query($link,'update menus set sold_out=' . $_GET['sold_out'] . ' where product_id=' . $_GET['id']);
 
 pg_close($link);
 ?>
