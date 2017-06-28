@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>poSter board</title>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+	    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	    crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="js/bootstrap.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -30,6 +32,15 @@
 	$(function(){
 	$('td.dropdown').addClass('clickable').click(function() {
 	$(this).parent().next().toggle();
+	});
+	});
+      </script>
+
+      <script>
+	$(document).ready(function(){
+	$.getJSON("http://172.16.16.7/team1/sample/sample.json", function(data){
+	var txt = $('.clone').html();
+	$('.clone').html(txt.replace(/#name#/g, data[0].name));
 	});
 	});
       </script>
@@ -104,7 +115,7 @@
 	<tr class="menu-detail">
 	  <td colspan="7">熱量 100 kcal</td>
 	</tr>
-       <tr class="menu-row">
+       <tr class="menu-row clone">
           <td class="soldout-button"><i class="fa fa-times" aria-hidden="true"></i></td>
           <td class="modify-button"><a href="modify.html"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
           <td class="like-button"><i class="fa fa-star-o" aria-hidden="true"></i></td>
