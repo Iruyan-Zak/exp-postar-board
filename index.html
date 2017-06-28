@@ -38,7 +38,7 @@
 
       <script>
 	$(document).ready(function(){
-	$.getJSON("http://172.16.16.7/team1/sample/sample.json", function(data){
+	$.getJSON("sample/sample.json", function(data){
 	var txt = $('.clone').html();
 	$('.clone').html(txt.replace(/#name#/g, data[0].name));
 	});
