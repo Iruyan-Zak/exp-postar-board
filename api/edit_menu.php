@@ -20,6 +20,13 @@ if(!isset($_GET['id'])){
     exit;
 }
 
+if(isset($_GET['sold_on'])){
+    $sql = 'update menus set sold_on=' . $_GET['sold_on'] . ' where menu_id=' .$_GET['id'];
+}
+
+$result = pg_query($link,$sql);
+echo $result;
+
 $product_query[] = "'" . $_GET['name'] ."'" ;
 $product_query[] = $_GET['price'];
 
@@ -49,12 +56,6 @@ $sql = 'update products set (name,price,energy,protein,lipid,salt)=(' + join(','
 $result = pg_query($link,$sql);
 echo $result;
 
-if(isset($_GET['sold_on'])){
-    $sql = 'update menus set sold_on=' . $_GET['sold_on'] . ' where menu_id=' .$_GET['id'];
-}
-
-$result = pg_query($link,$sql);
-echo $result;
 
 pg_close($link);
 ?>
