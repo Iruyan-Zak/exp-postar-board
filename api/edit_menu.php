@@ -53,8 +53,8 @@ if(isset($_GET["salt"])){
 $sql = 'update products set (name,price,energy,protein,lipid,salt)=(' + join(',' , $product_query) . ') from menus where products.product_id=menus.product_id and menus.menu_id=' . $_GET['id'];
 pg_query($link,$sql);
 
-if(isset($_GET['date'])){
-    $sql = 'update menus set sold_on=\'' . $_GET['date'] . '\' where menu_id=' .$_GET['id'];
+if(isset($_GET['sold_on'])){
+    $sql = 'update menus set sold_on=\'' . $_GET['sold_on'] . '\' where menu_id=' .$_GET['id'];
 }
 pg_close($link);
 ?>
