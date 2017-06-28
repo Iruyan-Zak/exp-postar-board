@@ -5,7 +5,7 @@ if (!$link) {
     exit;
 }
 if(!isset($_GET['id']) ||!isset($_GET['sold_out'])){
-    pg_query($link,'update menus set sold_out=' . $_GET['sold_out'] . ' where product_id=' . $_GET['id'] . 'returning product_id');
+    pg_query($link,'update menus set sold_out=' . $_GET['sold_out'] . ' where product_id=' . $_GET['id']);
 }else[
     echo 'パラメータ不正';
 }
