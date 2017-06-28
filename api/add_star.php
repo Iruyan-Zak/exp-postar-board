@@ -4,10 +4,11 @@ if (!$link) {
     print('接続失敗');
     exit;
 }
-if (!isset($_GET['id'])){
-    echo 'パラメータ不正';
+if(!isset($_GET['id'])){
+    echo 'idがありません';
+    exit;
 }
-pg_query($link,'delete from menus where menu_id=' . $_GET['id']);
+pg_query($link,'update menus set star=star+1 where menu_id=' . $_GET['id']);
 
 pg_close($link);
 ?>
