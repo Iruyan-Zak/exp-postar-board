@@ -7,11 +7,6 @@ if (!$link) {
 $product_query = array();
 $menu_query = array();
 
-if(!isset($_GET["sold_on"])){
-    echo '販売日指定なし';
-    exit;
-}
-
 if(!isset($_GET["name"])){
     echo '名前がありません';
     exit;
@@ -54,7 +49,7 @@ $sql = 'update products set (name,price,energy,protein,lipid,salt)=(' + join(','
 pg_query($link,$sql);
 
 if(isset($_GET['sold_on'])){
-    $sql = 'update menus set sold_on=\'' . $_GET['sold_on'] . '\' where menu_id=' .$_GET['id'];
+    $sql = 'update menus set sold_on=' . $_GET['sold_on'] . ' where menu_id=' .$_GET['id'];
 }
 pg_close($link);
 ?>
