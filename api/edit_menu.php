@@ -21,7 +21,7 @@ if(!isset($_GET['id'])){
 }
 
 if(isset($_GET['sold_on'])){
-    $sql = 'update menus set sold_on=' . $_GET['sold_on'] . ' where menu_id=' .$_GET['id'];
+    $sql = 'update menus set sold_on=\'' . $_GET['sold_on'] . '\' where menu_id=' .$_GET['id'];
 }
 
 $result = pg_query($link,$sql);
