@@ -5,7 +5,7 @@ if (!$link) {
         exit;
 }
 
-if(!isset($_GET['name']){
+if(!isset($_GET['name'])){
     echo '名前を指定してください';
     exit;
 }
