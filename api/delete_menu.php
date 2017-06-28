@@ -7,7 +7,7 @@ if (!$link) {
 if (!isset($_GET['id'])){
     echo 'パラメータ不正';
 }
-pg_query($link,'delete from where menu_id=' . $_GET['id']);
+pg_query($link,'delete from menus where menu_id=' . $_GET['id']);
 
 pg_close($link);
 ?>
