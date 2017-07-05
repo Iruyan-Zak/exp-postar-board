@@ -13,6 +13,7 @@
         <script src="js/bootstrap.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link rel="stylesheet" href="style.css">
+        <script src="main.js"></script>
     </head>
 
     <body class="no-thank-yu">
@@ -28,59 +29,6 @@
                 <input type="button" id="register-button" class="btn btn-primary" onclick="location.href='register.html'" value="商品登録">
             </div>
 
-
-            <script>
-var keys = ['star', 'name', 'price', 'energy', 'protein', 'lipid', 'salt'];
-var booleans = {'f': 'false', 't': 'true'};
-
-var menuJSONs = {}
-$(function(){
-    $.getJSON("sample/sample.json", function(data){
-        var table = $('.menu-table:first');
-
-        for(var dict of data){
-
-            menuJSONs[dict.menu_id] = dict;
-
-            var dom_str = $('#template').clone(true).removeAttr('id').html();
-
-            for(var key of keys){
-                let pattern = `#${key}#`;
-                console.log(pattern);
-                dom_str = dom_str.replace(pattern, dict[key] || '-');
-            }
-
-            var dom = $(dom_str);
-
-            var menurow = dom.eq(0)
-                .attr({
-                    'soldout': booleans[dict.sold_out],
-                    'menu_id': dict.menu_id
-                });
-
-            console.log(dom);
-            table.append(dom);
-        }
-
-        $('.dropdown')
-            .addClass('clickable')
-            .click(function() {
-                console.log(this);
-                $(this).parent().next().toggle();
-            });
-
-        $('i.fa-times').addClass('clickable').click(function(){
-            console.log(this);
-            var txt = $(this).closest('tr.menu-row').attr("soldout");
-            if(txt == "false"){
-                $(this).closest('tr.menu-row').attr({soldout:txt.replace(/false/g, "true")});
-            }else if(txt == "true"){
-                $(this).closest('tr.menu-row').attr({soldout:txt.replace(/true/g, "false")});
-            }
-        });
-    });
-});
-            </script>
 
             <table class="menu-table table table-striped">
                 <tr class="menu-row">
@@ -111,8 +59,4 @@ $(function(){
             </table>
         </div>
     </body>
-
-    <script>
-    </script>
-
 </html>
