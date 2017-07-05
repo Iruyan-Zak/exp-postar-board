@@ -68,17 +68,16 @@ $(function(){
                 console.log(this);
                 $(this).parent().next().toggle();
             });
-    });
-});
 
-$(function(){
-    $('i.fa-times').addClass('clickable').click(function(){
-        var txt = $(this).closest('tr.menu-row').attr("soldout");
-        if(txt == "false"){
-            $(this).closest('tr.menu-row').attr({soldout:txt.replace(/false/g, "true")});
-        }else if(txt == "true"){
-            $(this).closest('tr.menu-row').attr({soldout:txt.replace(/true/g, "false")});
-        }
+        $('i.fa-times').addClass('clickable').click(function(){
+            console.log(this);
+            var txt = $(this).closest('tr.menu-row').attr("soldout");
+            if(txt == "false"){
+                $(this).closest('tr.menu-row').attr({soldout:txt.replace(/false/g, "true")});
+            }else if(txt == "true"){
+                $(this).closest('tr.menu-row').attr({soldout:txt.replace(/true/g, "false")});
+            }
+        });
     });
 });
             </script>
