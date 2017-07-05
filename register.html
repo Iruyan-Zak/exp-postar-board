@@ -15,6 +15,7 @@
     <div class="container">
         <h1>メニュー登録画面</h1>
 
+	<form action="http://172.16.16.7/team1/api/add_menu.php" method="get" onsubmit="javascript:window.history.back(-1);return false;">
         <table class="table">
             <tr>
                 <th>商品名</th>
@@ -23,7 +24,7 @@
             </tr>
             <tr>
                 <th>販売日</th>
-                <td><input type="date" name="sale_date"></td>
+                <td><input type="date" name="sold_on"></td>
             </tr>
 
             <tr>
@@ -49,8 +50,9 @@
             </tr>
         </table>
 
-        <input type="button" onclick="location.href='index.html'" value="登録">
+        <input type="submit" value="登録">
         <input type="button" onclick="location.href='index.html'" value="キャンセル">
+	</form>
 
     </div>
 </body>
