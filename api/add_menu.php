@@ -7,35 +7,35 @@ if (!$link) {
 $product_query = array();
 $menu_query = array();
 
-if(!isset($_GET["sold_on"])){
+if($_GET["sold_on"] == ''){
     echo '販売日指定なし';
     exit;
 }
 
-if(!isset($_GET["name"]) ||!isset($_GET['price'])){
+if($_GET["name"] == '' ||$_GET['price'] == ''){
     echo '不正なパラメータ';
     exit;
 }
 $product_query[] = "'" . $_GET['name'] ."'" ;
 $product_query[] = $_GET['price'];
 
-if(isset($_GET["energy"])){
+if($_GET["energy"] != ''){
     $product_query[] = $_GET['energy'];
 } else {
     $product_query[] = 'null';
 }
 
-if(isset($_GET["protein"])){
+if($_GET["protein"] != ''){
     $product_query[] = $_GET['protein'];
 } else {
     $product_query[] = 'null';
 }
-if(isset($_GET["lipid"])){
+if($_GET["lipid"] !=''){
     $product_query[] = $_GET['lipid'];
 } else {
     $product_query[] = 'null';
 }
-if(isset($_GET["salt"])){
+if($_GET["salt"] != ''){
     $product_query[] = $_GET['salt'];
 } else {
     $product_query[] = 'null';
