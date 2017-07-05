@@ -45,6 +45,19 @@
 	});
       </script>
 
+      <script>
+	$(function(){
+	$('i.fa-times').addClass('clickable').click(function(){
+	var txt = $(this).closest('tr.menu-row').attr("soldout");
+	if(txt == "false"){
+	$(this).closest('tr.menu-row').attr({soldout:txt.replace(/false/g, "true")});
+	}else if(txt == "true"){
+	$(this).closest('tr.menu-row').attr({soldout:txt.replace(/true/g, "false")});
+	}
+	});
+	});
+      </script>
+
       <table class="menu-table table table-striped">
         <tr class="menu-row">
           <th id="item-modify-header"></th>
@@ -55,7 +68,7 @@
           <th id="item-price-header">価格 (円)</th>
           <th id="item-cal-header">熱量 (kcal)</th>
         </tr>
-        <tr class="menu-row">
+        <tr class="menu-row" soldout="false">
           <td class="soldout-button"><i class="fa fa-times" aria-hidden="true"></i></td>
           <td class="modify-button"><a href="modify.html"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
           <td class="like-button"><i class="fa fa-star-o" aria-hidden="true"></i></td>
@@ -67,7 +80,7 @@
 	<tr class="menu-detail">
 	  <td colspan="7">熱量 100 kcal</td>
 	</tr>
-        <tr class="menu-row" soldout="true">
+        <tr class="menu-row" soldout="false">
           <td class="soldout-button"><i class="fa fa-times" aria-hidden="true"></i></td>
           <td class="modify-button"><a href="modify.html"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
           <td class="like-button"><i class="fa fa-star-o" aria-hidden="true"></i></td>
@@ -79,7 +92,7 @@
 	<tr class="menu-detail">
 	  <td colspan="7">熱量 100 kcal</td>
 	</tr>
-        <tr class="menu-row">
+        <tr class="menu-row" soldout="false">
           <td class="soldout-button"><i class="fa fa-times" aria-hidden="true"></i></td>
           <td class="modify-button"><a href="modify.html"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
           <td class="like-button"><i class="fa fa-star-o" aria-hidden="true"></i></td>
@@ -91,7 +104,7 @@
 	<tr class="menu-detail">
 	  <td colspan="7">熱量 100 kcal</td>
 	</tr>
-        <tr class="menu-row">
+        <tr class="menu-row" soldout="false">
           <td class="soldout-button"><i class="fa fa-times" aria-hidden="true"></i></td>
           <td class="modify-button"><a href="modify.html"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
           <td class="like-button"><i class="fa fa-star-o" aria-hidden="true"></i></td>
@@ -103,7 +116,7 @@
 	<tr class="menu-detail">
 	  <td colspan="7">熱量 100 kcal</td>
 	</tr>
-        <tr class="menu-row">
+        <tr class="menu-row" soldout="false">
           <td class="soldout-button"><i class="fa fa-times" aria-hidden="true"></i></td>
           <td class="modify-button"><a href="modify.html"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
           <td class="like-button"><i class="fa fa-star-o" aria-hidden="true"></i></td>
@@ -115,13 +128,13 @@
 	<tr class="menu-detail">
 	  <td colspan="7">熱量 100 kcal</td>
 	</tr>
-       <tr class="menu-row clone">
+       <tr class="menu-row clone" soldout="false">
           <td class="soldout-button"><i class="fa fa-times" aria-hidden="true"></i></td>
           <td class="modify-button"><a href="modify.html"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
           <td class="like-button"><i class="fa fa-star-o" aria-hidden="true"></i></td>
           <td class="item-liked number">#star#</td>
           <td class="item-name dropdown">#name#</td>
-          <td class="number item-price dropdown">#price#</td>
+          <td class="number item-price dropdown"><span>#price#</span></td>
           <td class="number item-cal dropdown">#energy#</td>
         </tr>
 	<tr class="menu-detail">
