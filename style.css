@@ -75,3 +75,6 @@ tr[soldout="true"] > .item-price > span{
     text-decoration: line-through;
 }
 
+#template {
+    display: none;
+}
