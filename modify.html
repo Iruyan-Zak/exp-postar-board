@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="js/bootstrap.js"></script>
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript">
+      function DataReceive(){
+      var data = location.search.substring(1, location.search.length);
+      data = unescape(data);
+      alert(data);
+      }
+      window.onload = DataReceive;
+    </script>
 </head>
 
 <body class="no-thank-yu">
@@ -51,6 +59,7 @@
 
         <input type="button" onclick="location.href='index.html'" value="登録">
         <input type="button" onclick="location.href='index.html'" value="キャンセル">
+	<input type="button" onclick="location.href='index.html'" value="このメニューを削除する">
 
     </div>
 </body>

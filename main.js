@@ -38,7 +38,7 @@ $(function(){
             });
 
         $('i.fa-times').addClass('clickable').click(function(){
-            console.log(this);
+            // console.log(this);
             var txt = $(this).closest('tr.menu-row').attr("soldout");
             if(txt == "false"){
                 $(this).closest('tr.menu-row').attr({soldout:txt.replace(/false/g, "true")});
@@ -49,3 +49,10 @@ $(function(){
     });
 });
 
+function DataSend(self){
+    alert("");
+    console.dir(self);
+    var id = $(self).closest('tr').attr("menu-id");
+    console.log(id);
+    location.href="modify.html?" + escape(JSON.stringify(menuJSONs[id]));
+}
