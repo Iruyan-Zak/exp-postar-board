@@ -61,7 +61,8 @@
 
     <script>
 function sendRequest(form){
-    var xhr = new XMLHttpRequest();
+    console.log(form);
+/*    var xhr = new XMLHttpRequest();
     xhr.open("GET", "api/add_menu.php");
     xhr.onload = function(e) {
         if (xhr.readyState === 4) {
@@ -76,7 +77,7 @@ function sendRequest(form){
         console.error(xhr.statusText);
     };
     xhr.send(null);
-
+*/
     return false;
 }
 
