@@ -50,9 +50,7 @@ $(function(){
 });
 
 function DataSend(self){
-    alert("");
-    console.dir(self);
-    var id = $(self).closest('tr').attr("menu-id");
+    var id = $(self).closest('tr').attr("menu_id");
     console.log(id);
     location.href="modify.html?" + escape(JSON.stringify(menuJSONs[id]));
 }
