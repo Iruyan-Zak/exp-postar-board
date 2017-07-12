@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>メニュー登録画面</title>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+                crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="js/bootstrap.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -15,7 +18,7 @@
     <div class="container">
         <h1>メニュー登録画面</h1>
 
-	<form action="http://172.16.16.7/team1/api/add_menu.php" method="get" onsubmit="javascript:window.history.back(-1);return false;">
+	<form>
         <table class="table">
             <tr>
                 <th>商品名</th>
@@ -50,11 +53,37 @@
             </tr>
         </table>
 
-        <input type="submit" value="登録">
+        <input type="button" onclick="return sendRequest(this.form)" value="登録">
         <input type="button" onclick="location.href='index.html'" value="キャンセル">
 	</form>
 
     </div>
+
+    <script>
+function sendRequest(form){
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "api/add_menu.php");
+    xhr.onload = function(e) {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                checkResponce(xhr.responseText);
+            } else {
+                console.error(xhr.statusText);
+            }
+        }
+    };
+    xhr.onerror = function (e) {
+        console.error(xhr.statusText);
+    };
+    xhr.send(null);
+
+    return false;
+}
+
+function checkResponce(content){
+    console.log(content)
+}
+    </script>
 </body>
 
 </html>
