@@ -61,24 +61,16 @@
 
     <script>
 function sendRequest(form){
-    console.log(form);
-/*    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "api/add_menu.php");
-    xhr.onload = function(e) {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                checkResponce(xhr.responseText);
-            } else {
-                console.error(xhr.statusText);
-            }
-        }
-    };
-    xhr.onerror = function (e) {
-        console.error(xhr.statusText);
-    };
-    xhr.send(null);
-*/
-    return false;
+    var s = "?";
+    var inputs = $('input');
+
+    for(var i=0; i<7; i++){
+        e = inputs[i];
+        if(i) { s += "&"; }
+        s += e.name + "=" + e.value;
+    }
+
+    location.href = "api/add_menu.php" + s;
 }
 
 function checkResponce(content){
