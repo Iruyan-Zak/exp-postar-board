@@ -1,147 +1,62 @@
 <!doctype html>  <!--172.16.16.7/team1/-->
 <html>
 
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>poSter board</title>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-	    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-	    crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <script src="js/bootstrap.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-  </head>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>poSter board</title>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+                crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <script src="js/bootstrap.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+        <script src="main.js"></script>
+    </head>
 
-  <body class="no-thank-yu">
-    <div class="container">
-      <h1>poSter board (明石高専 食堂献立確認サービス)</h1>
-      <h2>5月XX日のメニュー</h2>
+    <body class="no-thank-yu">
+        <div class="container">
+            <h1>poSter board (明石高専 食堂献立確認サービス)</h1>
+            <h2>5月XX日のメニュー</h2>
 
-      <div id="change-day-area">
-        <input type="button" id="previous-day-button" class="btn" value="前の日">
-        <input type="button" id="next-day-button" class="btn" value="次の日">
-      </div>
-      <div id="register-area">
-	<input type="button" id="register-button" class="btn btn-primary" onclick="location.href='register.html'" value="商品登録">
-      </div>
+            <div id="change-day-area">
+                <input type="button" id="previous-day-button" class="btn" value="前の日">
+                <input type="button" id="next-day-button" class="btn" value="次の日">
+            </div>
+            <div id="register-area">
+                <input type="button" id="register-button" class="btn btn-primary" onclick="location.href='register.html'" value="商品登録">
+            </div>
 
-      <script>
-	$(function(){
-	$('td.dropdown').addClass('clickable').click(function() {
-	$(this).parent().next().toggle();
-	});
-	});
-      </script>
 
-      <script>
-	$(document).ready(function(){
-	$.getJSON("sample/sample.json", function(data){
-	var txt = $('.clone').html();
-	$('.clone').html(txt.replace(/#name#/g, data[0].name));
-	});
-	});
-      </script>
-
-      <script>
-	$(function(){
-	$('i.fa-times').addClass('clickable').click(function(){
-	var txt = $(this).closest('tr.menu-row').attr("soldout");
-	if(txt == "false"){
-	$(this).closest('tr.menu-row').attr({soldout:txt.replace(/false/g, "true")});
-	}else if(txt == "true"){
-	$(this).closest('tr.menu-row').attr({soldout:txt.replace(/true/g, "false")});
-	}
-	});
-	});
-      </script>
-
-      <table class="menu-table table table-striped">
-        <tr class="menu-row">
-          <th id="item-modify-header"></th>
-          <th id="item-like-header"></th>
-          <th id="item-soldout-header"></th>
-          <th id="item-liked-header">☆</th>
-          <th id="item-name-header">メニュー名</th>
-          <th id="item-price-header">価格 (円)</th>
-          <th id="item-cal-header">熱量 (kcal)</th>
-        </tr>
-        <tr class="menu-row" soldout="false">
-          <td class="soldout-button"><i class="fa fa-times" aria-hidden="true"></i></td>
-          <td class="modify-button"><a href="modify.html"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-          <td class="like-button"><i class="fa fa-star-o" aria-hidden="true"></i></td>
-          <td class="item-liked number">1</td>
-          <td class="item-name dropdown">特選国産牛フィレ肉とフォアグラのロースト ランド風ポテトと野生茸のフリカッセ 旬の彩り野菜 フランス産モリーユ茸とヴィンテージポルト酒のソース</td>
-          <td class="number item-price dropdown"><span>100</span></td>
-          <td class="number item-cal dropdown">112</td>
-        </tr>
-	<tr class="menu-detail">
-	  <td colspan="7">熱量 100 kcal</td>
-	</tr>
-        <tr class="menu-row" soldout="false">
-          <td class="soldout-button"><i class="fa fa-times" aria-hidden="true"></i></td>
-          <td class="modify-button"><a href="modify.html"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-          <td class="like-button"><i class="fa fa-star-o" aria-hidden="true"></i></td>
-          <td class="item-liked number">2</td>
-          <td class="item-name dropdown">特選国産牛フィレ肉とフォアグラのロースト ランド風ポテトと野生茸のフリカッセ 旬の彩り野菜 フランス産モリーユ茸とヴィンテージポルト酒のソース</td>
-          <td class="number item-price dropdown"><span>200</span></td>
-          <td class="number item-cal dropdown">212</td>
-        </tr>
-	<tr class="menu-detail">
-	  <td colspan="7">熱量 100 kcal</td>
-	</tr>
-        <tr class="menu-row" soldout="false">
-          <td class="soldout-button"><i class="fa fa-times" aria-hidden="true"></i></td>
-          <td class="modify-button"><a href="modify.html"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-          <td class="like-button"><i class="fa fa-star-o" aria-hidden="true"></i></td>
-          <td class="item-liked number">3</td>
-          <td class="item-name dropdown">特選国産牛フィレ肉とフォアグラのロースト ランド風ポテトと野生茸のフリカッセ 旬の彩り野菜 フランス産モリーユ茸とヴィンテージポルト酒のソース</td>
-          <td class="number item-price dropdown"><span>300</span></td>
-          <td class="number item-cal dropdown">312</td>
-        </tr>
-	<tr class="menu-detail">
-	  <td colspan="7">熱量 100 kcal</td>
-	</tr>
-        <tr class="menu-row" soldout="false">
-          <td class="soldout-button"><i class="fa fa-times" aria-hidden="true"></i></td>
-          <td class="modify-button"><a href="modify.html"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-          <td class="like-button"><i class="fa fa-star-o" aria-hidden="true"></i></td>
-          <td class="item-liked number">4</td>
-          <td class="item-name dropdown">特選国産牛フィレ肉とフォアグラのロースト ランド風ポテトと野生茸のフリカッセ 旬の彩り野菜 フランス産モリーユ茸とヴィンテージポルト酒のソース</td>
-          <td class="number item-price dropdown"><span>400</span></td>
-          <td class="number item-cal dropdown">412</td>
-        </tr>
-	<tr class="menu-detail">
-	  <td colspan="7">熱量 100 kcal</td>
-	</tr>
-        <tr class="menu-row" soldout="false">
-          <td class="soldout-button"><i class="fa fa-times" aria-hidden="true"></i></td>
-          <td class="modify-button"><a href="modify.html"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-          <td class="like-button"><i class="fa fa-star-o" aria-hidden="true"></i></td>
-          <td class="item-liked number">5</td>
-          <td class="item-name dropdown">特選国産牛フィレ肉とフォアグラのロースト ランド風ポテトと野生茸のフリカッセ 旬の彩り野菜 フランス産モリーユ茸とヴィンテージポルト酒のソース</td>
-          <td class="number item-price dropdown"><span>500</span></td>
-          <td class="number item-cal dropdown">512</td>
-        </tr>
-	<tr class="menu-detail">
-	  <td colspan="7">熱量 100 kcal</td>
-	</tr>
-       <tr class="menu-row clone" soldout="false">
-          <td class="soldout-button"><i class="fa fa-times" aria-hidden="true"></i></td>
-          <td class="modify-button"><a href="modify.html"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-          <td class="like-button"><i class="fa fa-star-o" aria-hidden="true"></i></td>
-          <td class="item-liked number">#star#</td>
-          <td class="item-name dropdown">#name#</td>
-          <td class="number item-price dropdown"><span>#price#</span></td>
-          <td class="number item-cal dropdown">#energy#</td>
-        </tr>
-	<tr class="menu-detail">
-	  <td colspan="7">タンパク質:#protein#g, 脂質:#lipid#g, 塩分:#salt#g</td>
-	</tr>
-      </table>
-    </div>
-  </body>
-
+            <table class="menu-table table table-striped">
+                <tr class="menu-row">
+                    <th id="item-modify-header"></th>
+                    <th id="item-like-header"></th>
+                    <th id="item-soldout-header"></th>
+                    <th id="item-liked-header">☆</th>
+                    <th id="item-name-header">メニュー名</th>
+                    <th id="item-price-header">価格 (円)</th>
+                    <th id="item-cal-header">熱量 (kcal)</th>
+                </tr>
+            </table>
+            <table>
+                <tbody id="template">
+                    <tr class="menu-row">
+                        <td class="soldout-button"><i class="fa fa-times" aria-hidden="true"></i></td>
+                        <td class="modify-button"><a href="modify.html"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                        <td class="like-button"><i class="fa fa-star-o" aria-hidden="true"></i></td>
+                        <td class="item-liked number">#star#</td>
+                        <td class="item-name dropdown">#name#</td>
+                        <td class="number item-price dropdown"><span>#price#</span></td>
+                        <td class="number item-cal dropdown">#energy#</td>
+                    </tr>
+                    <tr class="menu-detail">
+                        <td colspan="7">タンパク質:#protein#g, 脂質:#lipid#g, 塩分:#salt#g</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
 </html>
