@@ -16,13 +16,15 @@
       data = unescape(data);
       jsondata = JSON.parse(data);
       alert(data);
-      $("input[name='name'").val(jsondata["name"]);
-      $("input[name='sale_data'").val(jsondata["sold_on"]);
-      $("input[name='price'").val(jsondata["price"]);
-      $("input[name='energy'").val(jsondata["energy"]);
-      $("input[name='protein'").val(jsondata["protein"]);
-      $("input[name='lipid'").val(jsondata["lipid"]);
-      $("input[name='salt'").val(jsondata["salt"]);
+      $("#menu_id").attr('menu_id', jsondata["menu_id"]);
+
+      $("input[name='name']").val(jsondata["name"]);
+      $("input[name='sale_date']").val(jsondata["sold_on"]);
+      $("input[name='price']").val(jsondata["price"]);
+      $("input[name='energy']").val(jsondata["energy"]);
+      $("input[name='protein']").val(jsondata["protein"]);
+      $("input[name='lipid']").val(jsondata["lipid"]);
+      $("input[name='salt']").val(jsondata["salt"]);
       }
       window.onload = DataReceive;
     </script>
@@ -33,6 +35,7 @@
         <h1>メニュー編集画面</h1>
 
         <table class="table">
+            <tr id="menu_id" visibility="false"/>
             <tr>
                 <th>商品名</th>
                 <td><input type="text" name="name">
@@ -66,11 +69,29 @@
             </tr>
         </table>
 
-        <input type="button" onclick="location.href='index.html'" value="登録">
+        <input type="button" onclick="sendRequest(this.form)" value="登録">
         <input type="button" onclick="location.href='index.html'" value="キャンセル">
 	<input type="button" onclick="location.href='index.html'" value="このメニューを削除する">
 
     </div>
+
+    <script>
+function sendRequest(form){
+    var s = "?id=" + $("#menu_id").attr('menu_id');
+    var inputs = $('input');
+
+    for(var i=0; i<7; i++){
+        e = inputs[i];
+        s += "&" + e.name + "=" + e.value;
+    }
+
+    location.href = "api/edit_menu.php" + s;
+}
+
+function checkResponce(content){
+    console.log(content)
+}
+    </script>
 </body>
 
 </html>
