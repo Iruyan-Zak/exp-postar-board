@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>メニュー編集画面</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="js/bootstrap.js"></script>
     <link rel="stylesheet" href="style.css">
@@ -13,7 +14,15 @@
       function DataReceive(){
       var data = location.search.substring(1, location.search.length);
       data = unescape(data);
+      jsondata = JSON.parse(data);
       alert(data);
+      $("input[name='name'").val(jsondata["name"]);
+      $("input[name='sale_data'").val(jsondata["sold_on"]);
+      $("input[name='price'").val(jsondata["price"]);
+      $("input[name='energy'").val(jsondata["energy"]);
+      $("input[name='protein'").val(jsondata["protein"]);
+      $("input[name='lipid'").val(jsondata["lipid"]);
+      $("input[name='salt'").val(jsondata["salt"]);
       }
       window.onload = DataReceive;
     </script>
@@ -26,34 +35,34 @@
         <table class="table">
             <tr>
                 <th>商品名</th>
-                <td><input id="menu_id" type="text" name="name">
+                <td><input type="text" name="name">
                 </td>
             </tr>
             <tr>
                 <th>販売日</th>
-                <td><input id="name" type="date" name="sale_date"></td>
+                <td><input type="date" name="sale_date"></td>
             </tr>
 
             <tr>
                 <th>値段</th>
-                <td><input id="price" type="number" name="price"> (円)</td>
+                <td><input type="number" name="price"> (円)</td>
             </tr>
 
             <tr>
                 <th>エネルギー</th>
-                <td><input id="energy" type="number" name="energy"> (kcal)</td>
+                <td><input type="number" name="energy"> (kcal)</td>
             </tr>
             <tr>
                 <th>タンパク質</th>
-                <td><input id="protein" type="number" name="protein"> (g)</td>
+                <td><input type="number" name="protein"> (g)</td>
             </tr>
             <tr>
                 <th>脂質</th>
-                <td><input id="lipid" type="number" name="lipid"> (g)</td>
+                <td><input type="number" name="lipid"> (g)</td>
             </tr>
             <tr>
                 <th>塩分</th>
-                <td><input id="salt" type="number" name="salt">(g)</td>
+                <td><input type="number" name="salt">(g)</td>
             </tr>
         </table>
 
