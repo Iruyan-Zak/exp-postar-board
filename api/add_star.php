@@ -15,7 +15,7 @@ $sql = 'select products.max_star from products,menus where products.product_id=m
 $max_star = pg_fetch_row(pg_query($link,$sql))[0];
 
 
-if($star == $max_star){
+if($star != $max_star){
 
     $sql = 'update products set max_star=' . $star . ' from menus where products.product_id=menus.product_id and menus.menu_id=' . $_GET['id'];
     pg_query($link,$sql);
