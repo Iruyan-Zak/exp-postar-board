@@ -1,88 +1,121 @@
 <!DOCTYPE html>
 <html lang="ja">
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>メニュー編集画面</title>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <script src="js/bootstrap.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <script type="text/javascript">
-      function DataReceive(){
-      var data = location.search.substring(1, location.search.length);
-      data = unescape(data);
-      jsondata = JSON.parse(data);
-      alert(data);
-      $("#menu_id").attr('menu_id', jsondata["menu_id"]);
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>メニュー編集画面</title>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <script src="js/bootstrap.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <script type="text/javascript">
+	  function DataReceive(){
+	  var data = location.search.substring(1, location.search.length);
+	  data = unescape(data);
+	  jsondata = JSON.parse(data);
+	  $("#menu_id").attr('menu_id', jsondata["menu_id"]);
+	  $("input[name='name']").val($.trim(jsondata["name"]));
+	  $("input[name='sold_on']").val(jsondata["sold_on"]);
+	  $("input[name='price']").val(jsondata["price"]);
+	  $("input[name='energy']").val(jsondata["energy"]);
+	  $("input[name='protein']").val(jsondata["protein"]);
+	  $("input[name='lipid']").val(jsondata["lipid"]);
+	  $("input[name='salt']").val(jsondata["salt"]);
+	  }
+	  window.onload = DataReceive;
+	  
+	  function deletemenu(id){
+	  window.location.href = "api/delete_menu.php?id=" + id;
+	  }
+	</script>
+    </head>
 
-      $("input[name='name']").val(jsondata["name"]);
-      $("input[name='sale_date']").val(jsondata["sold_on"]);
-      $("input[name='price']").val(jsondata["price"]);
-      $("input[name='energy']").val(jsondata["energy"]);
-      $("input[name='protein']").val(jsondata["protein"]);
-      $("input[name='lipid']").val(jsondata["lipid"]);
-      $("input[name='salt']").val(jsondata["salt"]);
-      }
-      window.onload = DataReceive;
-    </script>
-</head>
+    <body class="no-thank-yu">
+        <div class="container">
+            <h1>メニュー編集画面</h1>
 
-<body class="no-thank-yu">
-    <div class="container">
-        <h1>メニュー編集画面</h1>
+            <table class="table">
+                <tr id="menu_id" visibility="false"/>
+                    <tr>
+                        <th>商品名</th>
+                        <td><input type="text" name="name">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>販売日</th>
+                        <td><input type="date" name="sold_on"></td>
+                    </tr>
 
-        <table class="table">
-            <tr id="menu_id" visibility="false"/>
-            <tr>
-                <th>商品名</th>
-                <td><input type="text" name="name">
-                </td>
-            </tr>
-            <tr>
-                <th>販売日</th>
-                <td><input type="date" name="sale_date"></td>
-            </tr>
+                    <tr>
+                        <th>値段</th>
+                        <td><input type="number" name="price"> (円)</td>
+                    </tr>
 
-            <tr>
-                <th>値段</th>
-                <td><input type="number" name="price"> (円)</td>
-            </tr>
+                    <tr>
+                        <th>エネルギー</th>
+                        <td><input type="number" name="energy"> (kcal)</td>
+                    </tr>
+                    <tr>
+                        <th>タンパク質</th>
+                        <td><input type="number" name="protein"> (g)</td>
+                    </tr>
+                    <tr>
+                        <th>脂質</th>
+                        <td><input type="number" name="lipid"> (g)</td>
+                    </tr>
+                    <tr>
+                        <th>塩分</th>
+                        <td><input type="number" name="salt">(g)</td>
+                    </tr>
+            </table>
 
-            <tr>
-                <th>エネルギー</th>
-                <td><input type="number" name="energy"> (kcal)</td>
-            </tr>
-            <tr>
-                <th>タンパク質</th>
-                <td><input type="number" name="protein"> (g)</td>
-            </tr>
-            <tr>
-                <th>脂質</th>
-                <td><input type="number" name="lipid"> (g)</td>
-            </tr>
-            <tr>
-                <th>塩分</th>
-                <td><input type="number" name="salt">(g)</td>
-            </tr>
-        </table>
+            <input type="button" onclick="sendRequest(this.form)" value="登録">
+            <input type="button" onclick="location.href='index.html'" value="キャンセル">
+            <input type="button" onclick="deletemenu(jsondata['menu_id']);" value="このメニューを削除する">
 
-        <input type="button" onclick="sendRequest(this.form)" value="登録">
-        <input type="button" onclick="location.href='index.html'" value="キャンセル">
-	<input type="button" onclick="location.href='index.html'" value="このメニューを削除する">
+        </div>
 
-    </div>
-
-    <script>
+        <script>
 function sendRequest(form){
-    var s = "?id=" + $("#menu_id").attr('menu_id');
+    var id = $("#menu_id").attr('menu_id');
+
+    if(!id){
+        alert("ページ内部でエラーが発生しました。");
+        location.href = "index.html";
+    }
+
+    var s = "?id=" + id;
     var inputs = $('input');
 
+    var o = {};
     for(var i=0; i<7; i++){
         e = inputs[i];
-        s += "&" + e.name + "=" + e.value;
+        o[e.name] = e.value;
+    }
+
+    var err_msg = "";
+
+    var check_list =
+    { 'name': "商品名"
+        , 'sold_on': "販売日"
+            , 'price': "値段"
+    }
+
+    for(var k in check_list){
+        if(!o[k]){
+            err_msg += check_list[k] + "を入力してください。\n";
+        }
+    }
+
+    if(err_msg){
+        alert(err_msg);
+        return false;
+    }
+
+    for(var k in o){
+        s += "&" + k + "=" + o[k];
     }
 
     location.href = "api/edit_menu.php" + s;
@@ -91,7 +124,7 @@ function sendRequest(form){
 function checkResponce(content){
     console.log(content)
 }
-    </script>
-</body>
+        </script>
+    </body>
 
 </html>
