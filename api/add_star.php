@@ -25,4 +25,3 @@ if($star == $max_star){
 
 pg_close($link);
 ?>
-
