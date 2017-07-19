@@ -60,6 +60,16 @@
     </div>
 
     <script>
+
+$(function(){
+    var storage = localStorage;
+
+    date = storage['date'];
+    $('input[name="sold_on"]').val(date);
+
+});
+
+
 $("input[name='name']").blur(function(){
      $.getJSON("api/get_product.php?name="+$(':text[name="name"]').val(), function(data){
          if (data==false){
