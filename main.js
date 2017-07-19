@@ -3,25 +3,20 @@ var booleans = {'f': 'false', 't': 'true'};
 
 var menuJSONs = {}
 $(function(){
+    args = getQueryString();
 
-    var arg  = new Object;
-    url = location.search.substring(1).split('&');
-
-    for(i=0; url[i]; i++) {
-        var k = url[i].split('=');
-        arg[k[0]] = k[1];
-    }
-
-    if(!arg.date){
-        var now= new Date();
-        var yyyymmdd = now.getFullYear()+"-"+( "0"+( now.getMonth()+1 ) ).slice(-2)+"-"+( "0"+now.getDate() ).slice(-2);
+    if(!args.date){
+        var now = new Date();
+        var yyyymmdd = isoFormat(now);
     }else{
-        var yyyymmdd = arg.date;
+        var yyyymmdd = args.date;
     }
     $("#menu-date").text(yyyymmdd+"のメニュー");
 
     $.getJSON("api/get_menu.php?date="+yyyymmdd, function(data){
         var table = $('.menu-table:first');
+
+        if(!data) return;
 
         for(var dict of data){
 
@@ -45,11 +40,9 @@ $(function(){
             table.append(dom);
         }
 
-        $('.dropdown')
-            .addClass('clickable')
-            .click(function() {
-                $(this).parent().next().toggle();
-            });
+        $('.dropdown').addClass('clickable').click(function() {
+            $(this).parent().next().toggle();
+        });
 
         $('i.fa-times').addClass('clickable').click(function(){soldOut(this)});
         $('i.fa-star-o').addClass('clickable').click(function(){fav(this)});
@@ -99,20 +92,31 @@ function DataSend(self){
 
 function moveday(n){
 
-    var arg = {};
+    var args = getQueryString();
+
+    if(!args.date){
+        var dt= new Date();
+    }else{
+        var dt = new Date(args.date);
+    }
+
+    dt.setDate(dt.getDate() + n);
+    var yyyymmdd = isoFormat(dt);
+    window.location.href = "index.html?date=" + yyyymmdd;
+}
+
+function getQueryString(){
+    var args  = {};
     url = location.search.substring(1).split('&');
 
     for(i=0; url[i]; i++) {
         var k = url[i].split('=');
-        arg[k[0]] = k[1];
+        args[k[0]] = k[1];
     }
 
-    if(!arg.date){
-        var dt= new Date();
-    }else{
-        var dt = new Date(arg.date);
-    }
-    dt.setDate(dt.getDate() + n);
-    var yyyymmdd = dt.getFullYear()+"-"+( "0"+( dt.getMonth()+1 ) ).slice(-2)+"-"+( "0"+dt.getDate() ).slice(-2);
-    window.location.href = "index.html?date=" + yyyymmdd;
+    return args;
+}
+
+function isoFormat(date){
+    return date.getFullYear()+"-"+( "0"+( date.getMonth()+1 ) ).slice(-2)+"-"+( "0"+date.getDate() ).slice(-2);
 }
