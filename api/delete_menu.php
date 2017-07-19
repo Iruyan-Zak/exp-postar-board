@@ -1,4 +1,6 @@
 <?php
+header('Location: http://172.16.16.7/team1/', true, 301);
+
 $link = pg_connect("host=localhost dbname=team1db user=team1 password=1qazxsw2");
 if (!$link) {
     print('接続失敗');
