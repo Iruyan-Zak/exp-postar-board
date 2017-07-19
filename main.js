@@ -3,17 +3,20 @@ var booleans = {'f': 'false', 't': 'true'};
 
 var menuJSONs = {}
 $(function(){
-    args = getQueryString();
+    var storage = localStorage;
 
-    if(!args.date){
-        var now = new Date();
-        var yyyymmdd = isoFormat(now);
-    }else{
-        var yyyymmdd = args.date;
+    date = storage['date'];
+
+    if(date) {
+        date = new Date(date);
+    } else {
+        date = new Date();
+        storage['date'] = isoFormat(date);
     }
-    $("#menu-date").text(yyyymmdd+"のメニュー");
 
-    $.getJSON("api/get_menu.php?date="+yyyymmdd, function(data){
+    $("#menu-date").text(isoFormat(date) + "のメニュー");
+
+    $.getJSON("api/get_menu.php?date=" + isoFormat(date), function(data){
         var table = $('.menu-table:first');
 
         if(!data) return;
@@ -91,18 +94,13 @@ function DataSend(self){
 }
 
 function moveday(n){
+    var storage = localStorage;
+    var date = new Date(storage['date']);
 
-    var args = getQueryString();
+    date.setDate(date.getDate() + n);
+    storage['date'] = isoFormat(date);
 
-    if(!args.date){
-        var dt= new Date();
-    }else{
-        var dt = new Date(args.date);
-    }
-
-    dt.setDate(dt.getDate() + n);
-    var yyyymmdd = isoFormat(dt);
-    window.location.href = "index.html?date=" + yyyymmdd;
+    window.location.href = "index.html?date=" + isoFormat(date);
 }
 
 function getQueryString(){
