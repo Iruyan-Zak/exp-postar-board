@@ -60,6 +60,23 @@
     </div>
 
     <script>
+$("input[name='name']").blur(function(){
+     $.getJSON("api/get_product.php?name="+$(':text[name="name"]').val(), function(data){
+         if (data==false){
+             $('input[name="price"]').val('');
+             $('input[name="energy"]').val('');
+             $('input[name="protein"]').val('');
+             $('input[name="lipid"]').val('');
+             $('input[name="salt"]').val('');
+         }
+
+         $('input[name="price"]').val(Number(data[data.length-1]['price'])||'');
+         $('input[name="energy"]').val(Number(data[data.length-1]['energy'])||'');
+         $('input[name="protein"]').val(Number(data[data.length-1]['protein'])||'');
+         $('input[name="lipid"]').val(Number(data[data.length-1]['lipid'])||'');
+         $('input[name="salt"]').val(Number(data[data.length-1]['salt'])||'');
+     });
+});
 function sendRequest(form){
     var s = "?";
     var inputs = $('input');
