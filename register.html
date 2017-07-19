@@ -81,13 +81,36 @@ function sendRequest(form){
     var s = "?";
     var inputs = $('input');
 
+    var o = {};
     for(var i=0; i<7; i++){
         e = inputs[i];
-        if(i) { s += "&"; }
-        s += e.name + "=" + e.value;
+        o[e.name] = e.value;
     }
 
-    location.href = "api/add_menu.php" + s;
+    var err_msg = "";
+
+    var check_list =
+    { 'name': "商品名"
+        , 'sold_on': "販売日"
+            , 'price': "値段"
+    }
+
+    for(var k in check_list){
+        if(!o[k]){
+            err_msg += check_list[k] + "を入力してください。\n";
+        }
+    }
+
+    if(err_msg){
+        alert(err_msg);
+        return false;
+    }
+
+    for(var k in o){
+        s += k + "=" + o[k] + "&";
+    }
+
+    location.href = "api/add_menu.php" + s.slice(0, -1);
 }
 
 function checkResponce(content){
