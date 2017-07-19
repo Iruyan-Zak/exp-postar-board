@@ -23,6 +23,7 @@
 
             <div id="change-day-area">
                 <input type="button" id="previous-day-button" class="btn" onclick="moveday(-1);" value="前の日">
+                <input type="button" id="today-button" class="btn" onclick="gotoday();" value="今日">
                 <input type="button" id="next-day-button" class="btn" onclick="moveday(1);" value="次の日">
             </div>
             <div id="register-area">
@@ -32,9 +33,9 @@
 
             <table class="menu-table table table-striped">
                 <tr class="menu-row">
-                    <th id="item-modify-header"></th>
-                    <th id="item-like-header"></th>
-                    <th id="item-soldout-header"></th>
+                    <th id="item-modify-header" class="btn-cell"></th>
+                    <th id="item-like-header" class="btn-cell"></th>
+                    <th id="item-soldout-header" class="btn-cell"></th>
                     <th id="item-liked-header">☆</th>
                     <th id="item-name-header">メニュー名</th>
                     <th id="item-price-header">価格 (円)</th>
@@ -44,9 +45,9 @@
             <table>
                 <tbody id="template">
                     <tr class="menu-row">
-                        <td class="soldout-button"><i class="fa fa-times" aria-hidden="true"></i></td>
-                        <td class="modify-button"><a onClick="DataSend(this);"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                        <td class="like-button"><i class="fa fa-star-o" aria-hidden="true"></i></td>
+                        <td class="btn-cell soldout-button"><i class="fa fa-times" aria-hidden="true"></i></td>
+                        <td class="btn-cell modify-button"><a onClick="DataSend(this);"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                        <td class="btn-cell like-button"><i class="fa fa-star-o" aria-hidden="true"></i></td>
                         <td class="item-liked number">#star#</td>
                         <td class="item-name dropdown">#name#</td>
                         <td class="number item-price dropdown"><span>#price#</span></td>

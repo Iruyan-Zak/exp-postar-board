@@ -100,7 +100,7 @@ function moveday(n){
     date.setDate(date.getDate() + n);
     storage['date'] = isoFormat(date);
 
-    window.location.href = "index.html?date=" + isoFormat(date);
+    window.location.href = "/team1";
 }
 
 function getQueryString(){
@@ -117,4 +117,9 @@ function getQueryString(){
 
 function isoFormat(date){
     return date.getFullYear()+"-"+( "0"+( date.getMonth()+1 ) ).slice(-2)+"-"+( "0"+date.getDate() ).slice(-2);
+}
+
+function gotoday(){
+    localStorage.clear();
+    window.location.href = '/team1';
 }
