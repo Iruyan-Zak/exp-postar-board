@@ -3,7 +3,24 @@ var booleans = {'f': 'false', 't': 'true'};
 
 var menuJSONs = {}
 $(function(){
-    $.getJSON("sample/sample.json", function(data){
+
+    var arg  = new Object;
+    url = location.search.substring(1).split('&');
+
+    for(i=0; url[i]; i++) {
+        var k = url[i].split('=');
+        arg[k[0]] = k[1];
+    }
+
+    if(!arg.date){
+        var now= new Date();
+        var yyyymmdd = now.getFullYear()+"-"+( "0"+( now.getMonth()+1 ) ).slice(-2)+"-"+( "0"+now.getDate() ).slice(-2);
+    }else{
+        var yyyymmdd = arg.date;
+    }
+    $("#menu-date").text(yyyymmdd+"のメニュー");
+
+    $.getJSON("api/get_menu.php?date="+yyyymmdd, function(data){
         var table = $('.menu-table:first');
 
         for(var dict of data){
@@ -78,4 +95,24 @@ function DataSend(self){
     var id = $(self).closest('tr').attr("menu_id");
     console.log(id);
     location.href="modify.html?" + escape(JSON.stringify(menuJSONs[id]));
+}
+
+function moveday(n){
+
+    var arg = {};
+    url = location.search.substring(1).split('&');
+
+    for(i=0; url[i]; i++) {
+        var k = url[i].split('=');
+        arg[k[0]] = k[1];
+    }
+
+    if(!arg.date){
+        var dt= new Date();
+    }else{
+        var dt = new Date(arg.date);
+    }
+    dt.setDate(dt.getDate() + n);
+    var yyyymmdd = dt.getFullYear()+"-"+( "0"+( dt.getMonth()+1 ) ).slice(-2)+"-"+( "0"+dt.getDate() ).slice(-2);
+    window.location.href = "index.html?date=" + yyyymmdd;
 }
